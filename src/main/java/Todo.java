@@ -1,8 +1,8 @@
 public class Todo extends Task{
-    public Todo(String Description){
+    public Todo(String Description) {
         super(Description);
     }
-    public String toString(){
+    public String toString() {
         return "[T]" + super.toString();
     }
 }

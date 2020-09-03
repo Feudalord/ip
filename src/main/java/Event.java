@@ -1,6 +1,6 @@
 public class Event extends Task {
     protected String at;
-    public Event(String Description, String at){
+    public Event(String Description, String at) {
         super(Description);
         this.at = at;
     }

@@ -21,51 +21,41 @@ public class Duke {
                 for(int x = 0; x < i; x++){
                     System.out.printf("%d.%s\n", x+1, tasks[x]);
                 }
-            }
-            else if (txt.startsWith("done ")){
+            }else if (txt.startsWith("done ")){
                 int num;
                 num = Integer.parseInt(txt.substring(5));
                 tasks[num - 1].isDone = true;
                 System.out.println("Nice! I've marked this task as done:");
                 System.out.println(tasks[num - 1]);
-            }
-            else if (txt.startsWith("todo ")){
+            }else if (txt.startsWith("todo ")){
                 tasks[i++] = new Todo(txt.substring(5));
                 System.out.println("Got it. I've added this task:");
                 System.out.println(tasks[i-1]);
                 System.out.printf("Now you have %d tasks in the list.\n", i);
 
-            }
-            else if (txt.startsWith("deadline ")){
-                int index;
-                index = txt.indexOf('/');
+            }else if (txt.startsWith("deadline ")){
+                int index = txt.indexOf('/');
                 if (index != -1) {
                     tasks[i++] = new Deadline(txt.substring(9,index), txt.substring(index+1));
                     System.out.println("Got it. I've added this task:");
                     System.out.println(tasks[i-1]);
                     System.out.printf("Now you have %d tasks in the list.\n", i);
-                }
-                else{
+                }else{
                     System.out.println("Missing '/' in the command");
                 }
-            }
-            else if (txt.startsWith("event ")){
-                int index;
-                index = txt.indexOf('/');
+            }else if (txt.startsWith("event ")){
+                int index = txt.indexOf('/');
                 if (index != -1) {
                     tasks[i++] = new Event(txt.substring(6,index), txt.substring(index+1));
                     System.out.println("Got it. I've added this task:");
                     System.out.println(tasks[i-1]);
                     System.out.printf("Now you have %d tasks in the list.\n", i);
-                }
-                else{
+                }else{
                     System.out.println("Missing '/' in the command");
                 }
-            }
-            else if(txt.equals("bye")){
+            }else if(txt.equals("bye")){
                 break;
-            }
-            else{
+            }else{
                 System.out.printf("%s\n\n", txt);
                 tasks[i++] = new Task(txt);
             }
