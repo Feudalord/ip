@@ -1,3 +1,7 @@
+package duke;
+
+import functions.*;
+
 import java.util.Scanner;
 
 public class Duke {
@@ -25,7 +29,7 @@ public class Duke {
                         System.out.printf("%d.%s\n", x + 1, tasks[x]);
                     }
                 } else if (txt.startsWith("done ")) {
-                    if(txt.equals("done ")) {
+                    if (txt.equals("done ")) {
                         throw new DukeException("No description entered ...");
                     }
                     int num;
@@ -37,7 +41,7 @@ public class Duke {
                     System.out.println("Nice! I've marked this task as done:");
                     System.out.println(tasks[num - 1]);
                 } else if (txt.startsWith("todo ")) {
-                    if(txt.equals("todo ")) {
+                    if (txt.equals("todo ")) {
                         throw new DukeException("No description entered ...");
                     }
                     tasks[i++] = new Todo(txt.substring(5));
@@ -46,7 +50,7 @@ public class Duke {
                     System.out.printf("Now you have %d tasks in the list.\n", i);
 
                 } else if (txt.startsWith("deadline ")) {
-                    if(txt.equals("deadline ")) {
+                    if (txt.equals("deadline ")) {
                         throw new DukeException("No description entered ...");
                     }
                     int index = txt.indexOf('/');
@@ -59,7 +63,7 @@ public class Duke {
                         throw new DukeException("Require '/' to indicate time ...");
                     }
                 } else if (txt.startsWith("event ")) {
-                    if(txt.equals("event ")) {
+                    if (txt.equals("event ")) {
                         throw new DukeException("No description entered ...");
                     }
                     int index = txt.indexOf('/');
@@ -78,8 +82,7 @@ public class Duke {
                 } else {
                     throw new DukeException("Invalid Command! Try 'todo','deadline','event','list','done','bye'!");
                 }
-            }
-            catch(Exception m){
+            } catch (Exception m) {
                 System.out.println("An exception has occurred: " + m);
             }
 
