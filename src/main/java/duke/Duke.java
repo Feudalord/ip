@@ -1,7 +1,7 @@
 package duke;
 
 import functions.*;
-
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Duke {
@@ -16,19 +16,18 @@ public class Duke {
         int i = 0;
         String txt;
         Scanner in = new Scanner(System.in);
-        Task[] tasks = new Task[100];
+        //Task[] tasks = new Task[100];
+        ArrayList<Task> tasks = new ArrayList<>();
 
         while (true) {
             txt = in.nextLine();
             try {
-                if (txt.equals("")) {
-                    throw new DukeException("No command entered !");
-                } else if (txt.equals("list")) {
+                if (txt.equals("list")) {                        //CMD LIST
                     System.out.println("Here are the tasks in your list:");
                     for (int x = 0; x < i; x++) {
-                        System.out.printf("%d.%s\n", x + 1, tasks[x]);
+                        System.out.printf("%d.%s\n", x + 1, tasks.get(x));
                     }
-                } else if (txt.startsWith("done ")) {
+                } else if (txt.startsWith("done ")) {            //CMD DONE
                     if (txt.equals("done ")) {
                         throw new DukeException("No description entered ...");
                     }
@@ -37,50 +36,66 @@ public class Duke {
                     if (num > i || num < 1) {
                         throw new DukeException("Invalid number entered ...");
                     }
-                    tasks[num - 1].isDone = true;
+                    tasks.get(num - 1).isDone = true;
                     System.out.println("Nice! I've marked this task as done:");
-                    System.out.println(tasks[num - 1]);
-                } else if (txt.startsWith("todo ")) {
+                    System.out.println(tasks.get(num - 1));
+                } else if (txt.startsWith("todo ")) {            //CMD TODO
                     if (txt.equals("todo ")) {
                         throw new DukeException("No description entered ...");
                     }
-                    tasks[i++] = new Todo(txt.substring(5));
+                    tasks.add(i++, new Todo(txt.substring(5)));
                     System.out.println("Got it. I've added this task:");
-                    System.out.println(tasks[i - 1]);
+                    System.out.println(tasks.get(i - 1));
                     System.out.printf("Now you have %d tasks in the list.\n", i);
 
-                } else if (txt.startsWith("deadline ")) {
+                } else if (txt.startsWith("deadline ")) {        //CMD DEADLINE
                     if (txt.equals("deadline ")) {
                         throw new DukeException("No description entered ...");
                     }
                     int index = txt.indexOf('/');
                     if (index != -1) {
-                        tasks[i++] = new Deadline(txt.substring(9, index), txt.substring(index + 1));
+                        tasks.add(i++, new Deadline(txt.substring(9, index), txt.substring(index + 1)));
                         System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks[i - 1]);
+                        System.out.println(tasks.get(i - 1));
                         System.out.printf("Now you have %d tasks in the list.\n", i);
                     } else {
                         throw new DukeException("Require '/' to indicate time ...");
                     }
-                } else if (txt.startsWith("event ")) {
+                } else if (txt.startsWith("event ")) {          //CMD EVENT
                     if (txt.equals("event ")) {
                         throw new DukeException("No description entered ...");
                     }
                     int index = txt.indexOf('/');
                     if (index != -1) {
-                        tasks[i++] = new Event(txt.substring(6, index), txt.substring(index + 1));
+                        tasks.add(i++, new Event(txt.substring(6, index), txt.substring(index + 1)));
                         System.out.println("Got it. I've added this task:");
-                        System.out.println(tasks[i - 1]);
+                        System.out.println(tasks.get(i - 1));
                         System.out.printf("Now you have %d tasks in the list.\n", i);
                     } else {
                         throw new DukeException("Require '/' to indicate time ...");
                     }
-                } else if (txt.equals("bye")) {
+                } else if (txt.startsWith("delete ")) {             //CMD DELETE
+                    if (txt.equals("delete ")) {
+                        throw new DukeException("No description entered ...");
+                    }
+                    int num;
+                    num = Integer.parseInt(txt.substring(7));
+                    if (num > i || num < 1) {
+                        throw new DukeException("Invalid number entered ...");
+                    }
+                    System.out.println("Noted. I've removed this task:");
+                    System.out.println(tasks.get(i - 1));
+                    System.out.printf("Now you have %d tasks in the list.\n", i - 1);
+                    tasks.remove(num - 1);
+                    i--;
+                } else if (txt.equals("bye")) {                 //CMD BYE
                     break;
-                } else if (txt.equals("todo") || txt.equals("deadline") || txt.equals("events") || txt.equals("done")) {
+                } else if (txt.equals("")) {                    //Exceptions handling
+                    throw new DukeException("No command entered !");
+                } else if (txt.equals("todo") || txt.equals("deadline") || txt.equals("events") || txt.equals("done") || txt.equals("delete")) {
                     throw new DukeException("No description entered ...");
                 } else {
-                    throw new DukeException("Invalid Command! Try 'todo','deadline','event','list','done','bye'!");
+                    throw new DukeException("Invalid Command! Try 'todo','deadline','event','list','delete','done','bye'!");
                 }
             } catch (Exception m) {
                 System.out.println("An exception has occurred: " + m);
