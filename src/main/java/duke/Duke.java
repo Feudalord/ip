@@ -1,7 +1,6 @@
 package duke;
 
 import functions.*;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 

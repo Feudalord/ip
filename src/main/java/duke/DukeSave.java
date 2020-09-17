@@ -15,14 +15,14 @@ public class DukeSave {
         for (int x = 0; x < i; x++) {
             str.append(t.get(x).toString() + System.lineSeparator());
         }
-        FileWriter fw = new FileWriter("src\\main\\java\\duke\\save.txt");
+        FileWriter fw = new FileWriter("./save.txt");
         fw.write(String.valueOf(str));
         fw.close();
     }
 
     static int load(ArrayList<Task> t) throws FileNotFoundException {
         int i = 0;
-        File f = new File("src\\main\\java\\duke\\save.txt");
+        File f = new File("./save.txt");
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String str = s.nextLine();
