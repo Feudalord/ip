@@ -1,5 +1,3 @@
-[T][✘] askinasg
-[T][✓] aruogaborg
-[T][✓] aorhagr
-[D][✓] oarignarg (by: 3pm)
-[E][✘] ofniasiogn (at: 2pm)
+[E][✓] onafduis (at: 3pm)
+[D][✓] aifnaio (by: today)
+[T][✓] oarufs
