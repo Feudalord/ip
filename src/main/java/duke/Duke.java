@@ -17,10 +17,15 @@ public class Duke {
         String txt;
         Scanner in = new Scanner(System.in);
         Task[] tasks = new Task[100];
-
+        try {
+            i = DukeSave.load(tasks);
+        }catch (Exception m) {
+            System.out.println("An exception has occurred: " + m);
+        }
         while (true) {
             txt = in.nextLine();
             try {
+
                 if (txt.equals("")) {
                     throw new DukeException("No command entered !");
                 } else if (txt.equals("list")) {
@@ -38,6 +43,7 @@ public class Duke {
                         throw new DukeException("Invalid number entered ...");
                     }
                     tasks[num - 1].isDone = true;
+                    DukeSave.save(tasks, i);
                     System.out.println("Nice! I've marked this task as done:");
                     System.out.println(tasks[num - 1]);
                 } else if (txt.startsWith("todo ")) {
@@ -45,6 +51,7 @@ public class Duke {
                         throw new DukeException("No description entered ...");
                     }
                     tasks[i++] = new Todo(txt.substring(5));
+                    DukeSave.save(tasks, i);
                     System.out.println("Got it. I've added this task:");
                     System.out.println(tasks[i - 1]);
                     System.out.printf("Now you have %d tasks in the list.\n", i);
@@ -56,6 +63,7 @@ public class Duke {
                     int index = txt.indexOf('/');
                     if (index != -1) {
                         tasks[i++] = new Deadline(txt.substring(9, index), txt.substring(index + 1));
+                        DukeSave.save(tasks, i);
                         System.out.println("Got it. I've added this task:");
                         System.out.println(tasks[i - 1]);
                         System.out.printf("Now you have %d tasks in the list.\n", i);
@@ -69,6 +77,7 @@ public class Duke {
                     int index = txt.indexOf('/');
                     if (index != -1) {
                         tasks[i++] = new Event(txt.substring(6, index), txt.substring(index + 1));
+                        DukeSave.save(tasks, i);
                         System.out.println("Got it. I've added this task:");
                         System.out.println(tasks[i - 1]);
                         System.out.printf("Now you have %d tasks in the list.\n", i);
