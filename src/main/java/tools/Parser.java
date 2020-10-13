@@ -3,6 +3,7 @@ package tools;
 import duke.DukeException;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class Parser {
     private static final String no_desc = "No description entered ...";
@@ -15,6 +16,11 @@ public class Parser {
 
         if (input.equals("list")) {
             Commands.list();
+        } else if (input.startsWith("list ")) {
+            if (input.equals("list ")) {
+                throw new DukeException(no_desc);
+            }
+            Commands.listDate(input.substring(5));
         } else if (input.equals("bye")) {
             return true;
         } else if (input.equals("help")) {
@@ -41,7 +47,7 @@ public class Parser {
             if (index == -1) {
                 throw new DukeException(no_slash);
             }
-            Commands.deadline(input.substring(9, index), input.substring(index + 1));
+            Commands.deadline(input.substring(9, index), LocalDate.parse(input.substring(index + 1), Constants.format1));
         } else if (input.startsWith("event ")) {
             if (input.equals("event ")) {
                 throw new DukeException(no_desc);
@@ -50,7 +56,7 @@ public class Parser {
             if (index == -1) {
                 throw new DukeException(no_slash);
             }
-            Commands.event(input.substring(6, index), input.substring(index + 1));
+            Commands.event(input.substring(6, index), LocalDate.parse(input.substring(index + 1), Constants.format1));
         } else if (input.startsWith("delete ")) {
             if (input.equals("delete ")) {
                 throw new DukeException(no_desc);

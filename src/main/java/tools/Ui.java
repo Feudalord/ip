@@ -38,10 +38,11 @@ public class Ui {
     public static void helpMsg() {
         System.out.println("List of Available Commands:\n");
         System.out.println("<list> Show all available tasks");
+        System.out.println("<list YYYY-MM-DD> Show all available tasks on the given day");
         System.out.println("<bye> Exit program");
         System.out.println("<todo -desc> Add Task");
-        System.out.println("<deadline -desc/-desc> Add deadline by /when");
-        System.out.println("<event -desc/-desc> Add event at /when");
+        System.out.println("<deadline -desc/YYYY-MM-DD> Add deadline by /when");
+        System.out.println("<event -desc/YYYY-MM-DD> Add event at /when");
         System.out.println("<done -num> Mark Task as Done");
         System.out.println("<delete -num> Delete Task");
     }

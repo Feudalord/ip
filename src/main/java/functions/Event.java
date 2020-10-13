@@ -1,14 +1,17 @@
 package functions;
 
+import tools.Constants;
+
+import java.time.LocalDate;
+
 public class Event extends Task {
-    protected String at;
 
-    public Event(String Description, String at) {
+    public Event(String Description, LocalDate at) {
         super(Description);
-        this.at = at;
+        this.date = at;
     }
 
-    public String toString() {
-        return "[E]" + super.toString() + " (at: " + at + ")";
-    }
+    public String toString() { return "[E]" + super.toString() + " (at: " + date.format(Constants.format2) + ")"; }
+
+    public String toSave() { return "[E]" + super.toSave() + "~&@#%" + date.format(Constants.format2); }
 }

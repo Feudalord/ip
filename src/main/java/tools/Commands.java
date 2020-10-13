@@ -2,9 +2,11 @@ package tools;
 
 import functions.Deadline;
 import functions.Event;
+import functions.Task;
 import functions.Todo;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 public class Commands {
 
@@ -14,13 +16,13 @@ public class Commands {
         Ui.addTaskMsg();
     }
 
-    public static void deadline(String desc, String time) throws IOException {
+    public static void deadline(String desc, LocalDate time) throws IOException {
         TaskList.addTask(new Deadline(desc, time));
         Storage.save();
         Ui.addTaskMsg();
     }
 
-    public static void event(String desc, String time) throws IOException {
+    public static void event(String desc, LocalDate time) throws IOException {
         TaskList.addTask(new Event(desc, time));
         Storage.save();
         Ui.addTaskMsg();
@@ -45,4 +47,17 @@ public class Commands {
         Storage.save();
     }
 
+    public static void listDate(String time) {
+        Ui.listTaskMsg();
+        LocalDate date = LocalDate.parse(time, Constants.format1);
+        for(int i = 0; i < TaskList.sizeOf(); i++){
+            Task task = TaskList.getTask(i);
+            LocalDate buffer = task.getDate();
+            if (buffer == null) {
+                continue;
+            } else if (buffer.equals(date)){
+                System.out.printf("%d.%s\n", i + 1, TaskList.getTask(i));
+            }
+        }
+    }
 }

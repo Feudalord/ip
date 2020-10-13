@@ -9,6 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Storage {
@@ -35,7 +36,7 @@ public class Storage {
         createFilepath();
         StringBuilder str = new StringBuilder();
         for (int x = 0; x < TaskList.sizeOf(); x++) {
-            str.append(TaskList.getTask(x).toString() + System.lineSeparator());
+            str.append(TaskList.getTask(x).toSave() + System.lineSeparator());
         }
         FileWriter fw = new FileWriter(filepath);
         fw.write(String.valueOf(str));
@@ -49,7 +50,7 @@ public class Storage {
         Scanner s = new Scanner(f);
         while (s.hasNext()) {
             String str = s.nextLine();
-            String[] part = str.split(" ");
+            String[] part = str.split("~&@#%");
             if (part[0].equals("[T][y]")) {
                 TaskList.addTask(new Todo(part[1]));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = true;
@@ -57,16 +58,16 @@ public class Storage {
                 TaskList.addTask(new Todo(part[1]));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = false;
             } else if (part[0].equals("[D][y]")) {
-                TaskList.addTask(new Deadline(part[1], part[3].substring(0, part[3].length() - 1)));
+                TaskList.addTask(new Deadline(part[1], LocalDate.parse(part[2], Constants.format2)));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = true;
             } else if (part[0].equals("[D][n]")) {
-                TaskList.addTask(new Deadline(part[1], part[3].substring(0, part[3].length() - 1)));
+                TaskList.addTask(new Deadline(part[1], LocalDate.parse(part[2], Constants.format2)));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = false;
             } else if (part[0].equals("[E][y]")) {
-                TaskList.addTask(new Event(part[1], part[3].substring(0, part[3].length() - 1)));
+                TaskList.addTask(new Event(part[1], LocalDate.parse(part[2], Constants.format2)));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = true;
             } else if (part[0].equals("[E][n]")) {
-                TaskList.addTask(new Event(part[1], part[3].substring(0, part[3].length() - 1)));
+                TaskList.addTask(new Event(part[1], LocalDate.parse(part[2], Constants.format2)));
                 TaskList.getTask(TaskList.sizeOf() - 1).isDone = false;
             }
         }
