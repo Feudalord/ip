@@ -47,7 +47,11 @@ public class Ui {
         System.out.println("<delete -num> Delete Task");
     }
 
-    public static void byeMsg(){
+    public static void byeMsg() {
         System.out.println("Bye. Hope to see you again soon!");
+    }
+
+    public static void parseExceptionMsg() {
+        System.out.println("Please enter a valid date in the format YYYY-MM-DD");
     }
 }

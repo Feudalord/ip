@@ -32,7 +32,6 @@ public class Storage {
     }
 
     public static void save() throws IOException {
-
         createFilepath();
         StringBuilder str = new StringBuilder();
         for (int x = 0; x < TaskList.sizeOf(); x++) {
@@ -44,7 +43,6 @@ public class Storage {
     }
 
     public static void load() throws IOException {
-
         createFilepath();
         File f = new File(filepath);
         Scanner s = new Scanner(f);

@@ -4,6 +4,7 @@ import tools.Parser;
 import tools.Storage;
 import tools.Ui;
 
+import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public class Duke {
@@ -24,6 +25,8 @@ public class Duke {
                     Ui.byeMsg();
                     return;
                 }
+            } catch (DateTimeParseException e) {
+                Ui.parseExceptionMsg();
             } catch (Exception e) {
                 System.out.println(e);
             }

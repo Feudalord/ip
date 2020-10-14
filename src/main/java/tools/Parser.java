@@ -11,10 +11,13 @@ public class Parser {
     private static final String no_cmd = "No command entered !";
     private static final String no_slash = "Require '/' to indicate time ...";
     private static final String wrong_num = "Invalid number entered ...";
+    private static final String forbid_key = "Commands contains forbidden keyphrase ~&@#%";
 
-    public static boolean parseInput(String input) throws IOException, DukeException {
+    public static boolean parseInput(String input) throws IOException, DukeException{
 
-        if (input.equals("list")) {
+        if (input.contains("~&@#%")) {
+            throw new DukeException(forbid_key);
+        } else if (input.equals("list")) {
             Commands.list();
         } else if (input.startsWith("list ")) {
             if (input.equals("list ")) {
