@@ -4,22 +4,22 @@ This user guide will help you use your duke task manager assistant.
 
 ## Features 
 
-### Feature 1 
+### Feature 1: Add task
 Adding new tasks with or without date.
 
-### Feature 2
+### Feature 2: List task
 List all tasks or list task with given date.
 
-### Feature 3
+### Feature 3: Find task
 Find a list of tasks with given keyword or keyphrase.
 
-### Feature 4
+### Feature 4: Mark task
 Ability to mark tasks as done.
 
-### Feature 5
+### Feature 5: Remove task
 Ability to delete tasks.
 
-### Feature 6
+### Feature 6: Save task
 Ability to save tasks and load them.
 
 ## Usage
@@ -27,6 +27,7 @@ Ability to save tasks and load them.
 ### Set up the program
 
 Copy indiproj.jar to any location of your computer as you desire.
+
 Copy path information of indiproj.jar
 
 Open command prompt.
