@@ -13,7 +13,7 @@ public class Parser {
     private static final String wrong_num = "Invalid number entered ...";
     private static final String forbid_key = "Commands contains forbidden keyphrase ~&@#%";
 
-    public static boolean parseInput(String input) throws IOException, DukeException{
+    public static boolean parseInput(String input) throws IOException, DukeException {
 
         if (input.contains("~&@#%")) {
             throw new DukeException(forbid_key);
@@ -28,6 +28,11 @@ public class Parser {
             return true;
         } else if (input.equals("help")) {
             Ui.helpMsg();
+        } else if (input.startsWith("find ")) {
+            if (input.equals("find ")) {
+                throw new DukeException(no_desc);
+            }
+            Commands.find(input.substring(5));
         } else if (input.startsWith("done ")) {
             if (input.equals("done ")) {
                 throw new DukeException(no_desc);
@@ -71,7 +76,7 @@ public class Parser {
             Commands.delete(num);
         } else if (input.equals("")) {
             throw new DukeException(no_cmd);
-        } else if (input.equals("todo") || input.equals("deadline") || input.equals("events") || input.equals("done") || input.equals("delete")) {
+        } else if (input.equals("todo") || input.equals("deadline") || input.equals("events") || input.equals("done") || input.equals("delete") || input.equals("find")) {
             throw new DukeException(no_desc);
         } else {
             throw new DukeException(invalid);

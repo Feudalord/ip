@@ -50,12 +50,23 @@ public class Commands {
     public static void listDate(String time) {
         Ui.listTaskMsg();
         LocalDate date = LocalDate.parse(time, Constants.format1);
-        for(int i = 0; i < TaskList.sizeOf(); i++){
+        for (int i = 0; i < TaskList.sizeOf(); i++) {
             Task task = TaskList.getTask(i);
             LocalDate buffer = task.getDate();
             if (buffer == null) {
                 continue;
-            } else if (buffer.equals(date)){
+            } else if (buffer.equals(date)) {
+                System.out.printf("%d.%s\n", i + 1, TaskList.getTask(i));
+            }
+        }
+    }
+
+    public static void find(String keyword) {
+        Ui.listTaskMsg();
+        for (int i = 0; i < TaskList.sizeOf(); i++) {
+            Task task = TaskList.getTask(i);
+            String buffer = task.getDescription();
+            if (buffer.contains(keyword)) {
                 System.out.printf("%d.%s\n", i + 1, TaskList.getTask(i));
             }
         }
