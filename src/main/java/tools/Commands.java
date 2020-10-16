@@ -47,9 +47,15 @@ public class Commands {
         Storage.save();
     }
 
-    public static void listDate(String time) {
+    /**
+     * List all tasks with the given date by searching and comparing every task in TaskList
+     * @param input raw input substring of index 5 and above from the user. Must be a valid date
+     * in valid format or an exception will be thrown inside LocalDate.parse and will be
+     * caught and handled in Duke main.
+     */
+    public static void listDate(String input) {
         Ui.listTaskMsg();
-        LocalDate date = LocalDate.parse(time, Constants.format1);
+        LocalDate date = LocalDate.parse(input, Constants.format1);
         for (int i = 0; i < TaskList.sizeOf(); i++) {
             Task task = TaskList.getTask(i);
             LocalDate buffer = task.getDate();
@@ -61,6 +67,11 @@ public class Commands {
         }
     }
 
+    /**
+     * List all tasks containing the given keyword by searching and comparing the description of
+     * every task in TaskList.
+     * @param keyword raw input substring of index 5 and above from the user.
+     */
     public static void find(String keyword) {
         Ui.listTaskMsg();
         for (int i = 0; i < TaskList.sizeOf(); i++) {

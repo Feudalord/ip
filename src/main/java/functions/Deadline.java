@@ -6,8 +6,8 @@ import java.time.LocalDate;
 
 public class Deadline extends Task {
 
-    public Deadline(String Description, LocalDate by) {
-        super(Description);
+    public Deadline(String description, LocalDate by) {
+        super(description);
         this.date = by;
     }
 

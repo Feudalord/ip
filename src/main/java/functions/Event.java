@@ -6,8 +6,8 @@ import java.time.LocalDate;
 
 public class Event extends Task {
 
-    public Event(String Description, LocalDate at) {
-        super(Description);
+    public Event(String description, LocalDate at) {
+        super(description);
         this.date = at;
     }
 

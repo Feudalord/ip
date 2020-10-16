@@ -13,6 +13,16 @@ public class Parser {
     private static final String wrong_num = "Invalid number entered ...";
     private static final String forbid_key = "Commands contains forbidden keyphrase ~&@#%";
 
+    /**
+     * Accepts raw input from the user. Decide if the input entered is valid. Warns user about
+     * the different types of invalid inputs and execute valid inputs in the methods of the
+     * Commands class.
+     * @param input Raw input String entered by the user.
+     * @return Returns a true to terminate the program in case "bye" command is given
+     * and a false to keep looping the program.
+     * @throws IOException save method produces IOException if the destination save file is not found.
+     * @throws DukeException warns about the different types of invalid inputs the user may enter.
+     */
     public static boolean parseInput(String input) throws IOException, DukeException {
 
         if (input.contains("~&@#%")) {

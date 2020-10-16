@@ -22,6 +22,11 @@ public class Storage {
         dir_path = directory;
     }
 
+    /**
+     * Check if directory and file exist and create them if they
+     * don't exist.
+     * @throws IOException Invalid path that files cannot be created on.
+     */
     public static void createFilepath() throws IOException {
         if (!Files.exists(Paths.get(dir_path))) {
             Files.createDirectory(Paths.get(dir_path));
@@ -31,6 +36,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Overwrite destination save file with a list of currently available tasks
+     * as given in the TaskList.
+     * @throws IOException Thrown if destination file being write to does not exist.
+     */
     public static void save() throws IOException {
         createFilepath();
         StringBuilder str = new StringBuilder();
@@ -42,6 +52,11 @@ public class Storage {
         fw.close();
     }
 
+    /**
+     * Read from save file and add tasks into TaskList. Also updates done status and
+     * date if available.
+     * @throws IOException Thrown if source file being read from does not exist.
+     */
     public static void load() throws IOException {
         createFilepath();
         File f = new File(filepath);
