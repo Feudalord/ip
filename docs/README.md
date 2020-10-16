@@ -44,9 +44,9 @@ Example of usage:
 
 Expected outcome:
 
-`Got it. I've added this task:
-[T][n] wash clothes
-Now you have 1 tasks in the list.`
+`Got it. I've added this task:`
+`[T][n] wash clothes`
+`Now you have 1 tasks in the list.`
 
 
 ### `deadline` - Add a task by given date
@@ -59,9 +59,9 @@ Example of usage:
 
 Expected outcome:
 
-`Got it. I've added this task:
-[D][n] programming assignment (by: Oct 10 2020)
-Now you have 2 tasks in the list.`
+`Got it. I've added this task:`
+`[D][n] programming assignment (by: Oct 10 2020)`
+`Now you have 2 tasks in the list.`
 
 
 ### `event` - Add a task at given date
@@ -74,9 +74,9 @@ Example of usage:
 
 Expected outcome:
 
-`Got it. I've added this task:
-[E][n] dell computer sales (at: Dec 24 2020)
-Now you have 3 tasks in the list.`
+`Got it. I've added this task:`
+`[E][n] dell computer sales (at: Dec 24 2020)`
+`Now you have 3 tasks in the list.`
 
 
 ### `done` - Mark task as done
@@ -89,8 +89,8 @@ Example of usage:
 
 Expected outcome:
 
-`Nice! I've marked this task as done:
-[T][y] wash clothes`
+`Nice! I've marked this task as done:`
+`[T][y] wash clothes`
 
 
 ### `delete` - Delete task
@@ -103,9 +103,9 @@ Example of usage:
 
 Expected outcome:
 
-`Noted. I've removed this task:
-[T][y] wash clothes
-Now you have 2 tasks in the list.`
+`Noted. I've removed this task:`
+`[T][y] wash clothes`
+`Now you have 2 tasks in the list.`
 
 
 ### `list` - List all tasks or tasks with given date
@@ -118,8 +118,8 @@ Example of usage:
 
 Expected outcome:
 
-`Here are the tasks in your list:
-1.[D][n] programming assignment (by: Oct 10 2020)`
+`Here are the tasks in your list:`
+`1.[D][n] programming assignment (by: Oct 10 2020)`
 
 
 ### `find` - Find a list of tasks with given keyword
@@ -133,8 +133,8 @@ Example of usage:
 
 Expected outcome:
 
-`Here are the tasks in your list:
-2.[E][n] dell computer sales (at: Dec 24 2020)`
+`Here are the tasks in your list:`
+`2.[E][n] dell computer sales (at: Dec 24 2020)`
 
 
 ### Save and Load feature
@@ -152,6 +152,6 @@ Example of usage:
 
 Expected outcome:
 
-`Here are the tasks in your list:
-1.[D][n] programming assignment (by: Oct 10 2020)
-2.[E][n] dell computer sales (at: Dec 24 2020)`
+`Here are the tasks in your list:`
+`1.[D][n] programming assignment (by: Oct 10 2020)`
+`2.[E][n] dell computer sales (at: Dec 24 2020)`
